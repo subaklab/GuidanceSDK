@@ -34,21 +34,21 @@ USB를 통해 데이터를 받기 위해 2가지 방법이 있다.
 
 1. Guidance Assistant 소프트웨어
 
-	User can use Guidance assistant software to subscribe the data in "DIY->API->USB" tab.
+	Guidance Assistant 소프트웨어를 이용해서 "DIY->API->USB" 탭에 있는 데이터를 받을 수 있다.
+	
+	- Guidance를 USB 케이블로 PC와 연결하고 전원을 켠다.
+	- "Enable" 체크박스 선택
+	- 원하는 데이터 선택
 
-	- Connect Guidance with PC using USB cable, power on the Guidance
-	- Choose the "Enable" check box
-	- Choose the data according your requirement
-
-	**Notes:** The available bandwidth is subject to the selection of image data and the output frequency. The selection of subscribed image data and output frequency will be saved and take effect when the Guidance system is turned off and on again.
+	**주의:** 가용한 대역폭은 이미지 데이터의 선택과 출력 대역폭이 반대다. 받은 이미지 데이터의 선택과 출력 대역폭은 저장되어 Guidance 시스템을 켰다가 켜도 계속 유지된다.
 
 	![](./image/Guidance_SDK_API5146.png)
 
 2. Guidance API
 
-	User can subscribe the data using Guidance API. Identity these API functions that are named with "select".
+	Guidance API를 이용해서 데이터를 받을 수 있다. 이러한 API 기능을 "select"라는 이름을 붙여서 구별한다.
 
-	**Notes:** If user subscribes the image data and output frequency using Guidance API functions, it will only temporarily override the data selection that is made in the Guidance Assistant software when the Guidance system is still powered on. However, the data selection that is made through the Guidance API will not permanently change the data subsections options stored in the Guidance system, unless you de-select the "Enable" option in the "USB" tab.
+	**주의:** If user subscribes the image data and output frequency using Guidance API functions, it will only temporarily override the data selection that is made in the Guidance Assistant software when the Guidance system is still powered on. However, the data selection that is made through the Guidance API will not permanently change the data subsections options stored in the Guidance system, unless you de-select the "Enable" option in the "USB" tab.
 
 ### 2.1.2 UART
 
