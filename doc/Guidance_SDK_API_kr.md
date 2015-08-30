@@ -19,20 +19,20 @@
 
 ![](./image/Guidance_SDK_API3987.png)
 
-- **Application:** This layer processes data from the HAL layer. It is written by developers.
-- **HAL:** This layer packs/parses the data to/from the Driver layer. It is implemented by the sample code (for UART) or SDK library (for USB), e.g. _libDJI\_guidance.so_.
-- **Driver:** This layer receives data from the Guidance system through USB/UART. It is implemented by OS or 3rd party libraries, e.g. _libusb_.
+- **Application:** 이 계층은 HAL 계층으로부터 데이터를 처리한다. 개발자가 작성한다.
+- **HAL:** 이 계층은 Driver 계층과 통신하여 데이터를 패킹하거나 파싱한다. 예제 코드(UART)나 SDK 라이브러리(USB)로 구현된다. e.g. _libDJI\_guidance.so_.
+- **Driver:** 이 계층은 Guidance 시스템에서 USB/UART로 데이터를 받는다.OS나 써드파티가 구현한다. e.g. _libusb_.
 
-## 2.1 Interface
-The Guidance SDK supports two communication protocols: USB&UART.
+## 2.1 인터페이스
+Guidance SDK는 2개 통신 프로토콜을 제공한다 : USB와 UART
 
 ### 2.1.1 USB
 
-The supported data types are Velocity Data, Obstacle Distance Data, IMU Data, Ultrasonic Data, Greyscale Image, and Depth Image.
+제공하는 데이터 타입은 속도 데이터와 장애물 거리 데이터, IMU 데이터, 울트라소닉 데이터, 그레이 스케일 이미지, Depth 이미지이다.
 
-There are two ways to subscribe the data through USB.
+USB를 통해 데이터를 받기 위해 2가지 방법이 있다.
 
-1. Guidance Assistant Software
+1. Guidance Assistant 소프트웨어
 
 	User can use Guidance assistant software to subscribe the data in "DIY->API->USB" tab.
 
