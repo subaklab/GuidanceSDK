@@ -127,34 +127,34 @@ Guidance SDK는 Guidance 시스템으로부터 데이터를 얻기 위한 예제
 
 2. **관련 파일 복사**
 
-	Makefiles are provided and tested. The user does not need to change anything to run the example code.
+	Makefile은 테스트해서 제공되었다. 사용자는 변경없이 에제 코드를 실행할 수 있다.
 
-	To use Guidance in their own projects, the user can follow the instructions below:
+	자신의 프로젝트에서 Guidance를 사용하기 위해서는 사용자는 아래와 같은 지시를 따라야 한다:
 
-	- Copy _libDJI\_guidance.so_ to "library file path" of your project.
+	- _libDJI\_guidance.so_를 여러분 프로젝트의 "library file path"에 복사한다.
 
-	- Copy _DJI\_guidance.h_ to "header file path".
+	- _DJI\_guidance.h_를 "header file path"에 복사한다.
 
-	- Add the library in the Makefile of your project as shown below.	
+	- 여러분 프로젝트의 Makefile에 해당 라이브러리를 아래와 같이 추가한다.
 	```
 	LDFLAGS = -Wl,-rpath,./ -lpthread -lrt -L./ -L/usr/local/lib/ -l **DJI\_guidance** -lusb-1.0
 	```
 
 
-3. **Compile the example project.**
+3. **예제 프로젝트 컴파일**
 
 	![](./image/Guidance_SDK_API9210.png)
 
-	**Note:** The default makefile assumes you don't have OpenCV installed and uses _Makefile\_noOpenCV_. You can specify the makefile during make according to your own case. For example if you have OpenCV installed, use the other makefile:
+	**주의:** 기본 makefile은 설치된 OpenCV가 없다고 가정하고 _Makefile\_noOpenCV_를 사용한다. 각자 자신의 환경에 따라서 작성하는 동안 makefile을 지정할 수 있다. 만약 이미 OpenCV가 설치되어 있다면, 다른 makefile을 사용하자 :
 
 	~~~
 	$ make –f Makefile
 	~~~
 
 
-4. **Connect Guidance via USB and run.**
+4. **USB를 통해 Guidance 연결해서 실행하기**
 
-	You need root permission to run this example:
+	이 예제를 실행하는데 root 권한이 필요하다:
 
 	~~~
 	$ sudo ./guidance_example
@@ -162,17 +162,17 @@ Guidance SDK는 Guidance 시스템으로부터 데이터를 얻기 위한 예제
 
 	![](./image/Guidance_SDK_API9567.png)
 
-### 3.2 Run USB example in Windows
+### 3.2 윈도우에서 USB 예제 실행
 
-1. **Setup the environment.**
+1. **환경설정**
 
-	The Guidance SDK uses the _libusb_ library to read data from Guidance system. Please make sure the Guidance Assistant Software is installed properly which includes DJI USB driver.
+	Guidance SDK는 _libusb_ 라이브러리를 사용해서 Guidance 시스템의 데이터를 읽는다. Guidance Assistant 소프트웨어가 제대로 설치되었는지 확인하자. DJI USB 드라이버는 포함되어 있다.
 
-2. **Configure Visual Studio.**
+2. **Visual Studio 설정**
 
-	Solutions for different versions of Visual Studio are provided and tested. The user do not need to change anything to run the example code.
+	각기 다른 Visual Studio 버전에 대해서 테스트 후 솔루션을 제공한다. 사용자는 변경없이 예제코드를 실행할 수 있다.
 
-	To use Guidance in their own projects, it is suggested to use the property sheets provided in the examples\usb\_example folder. The user only needs to change the directories of header and library files.
+	자신의 프로젝트에서 Guidance를 사용하려면,  examples\usb\_example 폴더에 제공하는 속성 시트를 사용하는 방법을 추천한다. 사용자는 헤더 디렉토리와 라이브러리 파일만 변경하면 된다.
 
 	~~~ xml
 	<?xml version="1.0" encoding="utf-8"?>
@@ -192,66 +192,66 @@ Guidance SDK는 Guidance 시스템으로부터 데이터를 얻기 위한 예제
 	</Project>
 	~~~
 
-	Alternatively, the user can directly copy the files and configure Visual Studio as follows:
+	다른 방안으로, 아래와 같이 파일을 복사해서 Visual Studio를 설정할 수 있다 :
 
-	- Copy _DJI\_guidance.dll_ and _DJI\_guidance.lib_ to "library file path" of your project.
+	- _DJI\_guidance.dll_와 _DJI\_guidance.lib_를 프로젝트의 "library file path"로 복사한다.
 
-	- Copy _DJI\_guidance.h_ to "header file path".
+	- _DJI\_guidance.h_를 "header file path"로 복사한다.
 
-	- Add _DJI\_guidance.lib_ to your Visual Studio project's additional dependencies.
+	- _DJI\_guidance.lib_를 Visual Studio 프로젝트의 additional dependencies에 추가한다.
 
 	![](./image/Guidance_SDK_API11350.png)
 
-3. **Compile the example project.**
+3. **예제 프로젝트 컴파일**
 
-	Compile the example project using Microsoft Visual Studio.
-
-4. **Connect the Guidance system for testing.**
+	Visual Studio를 이용해서 에제 프로젝트를 컴파일한다.
+	
+4. **테스팅을 위해 Guidance 시스템을 연결**
 
 	![](./image/Guidance_SDK_API11483.png)
 
-### 3.3 Run UART example in Linux
+### 3.3 UART 예제를 리눅스 환경에서 실행
 
-1. **Subscribe UART data.**
+1. **UART 데이터 받아오기**
 
-	Please reference Section 2.1.2 to subscribe the UART data.
+	UART 데이터 받아오기는 섹션 2.1.2를 참조하라.
 
-2. **Compile the example project.**
+2. **예제 프로젝트를 컴파일**
 
 	![](./image/Guidance_SDK_API11655.png)
 
-3. **Connect the Guidance system for testing.**
+3. **테스팅을 위해 Guidance 시스템 연결**
 
 	![](./image/Guidance_SDK_API11699.png)
 
-### 3.4 Run UART example in Windows
+### 3.4 UART 예제를 윈도우 환경에서 실행
 
-1. **Subscribe UART data.**
+1. **UART 데이터 받아오기**
 
-	Please reference Section 2.1.2 to subscribe the UART data.
+	UART 데이터 받아오기는 섹션 2.1.2를 참조하라.
 
-2. **Compile the example project.**
+2. **예제 프로젝트를 컴파일**
 
-	Compile the example project using Microsoft Visual Studio.
+	Visual Studio를 이용해서 예제 프로젝트를 컴파일한다.
 
-3. **Connect the Guidance system for testing.**
+3. **테스팅을 위해 Guidance 시스템 연결**
 
 	![](./image/Guidance_SDK_API11973.png)
 
 
-# 4 Data Structures
+# 4 자료구조
 
 ## e\_sdk\_err\_code
 
-**Description:** Define error code of SDK.
+**설명:** SDK의 error 코드 정의
 
 ~~~ cpp
 enum e_sdk_err_code
 {
-    e_sdk_no_err = 0,					// Succeed with no error.
-    e_load_libusb_err,					// Load libusb library error.
-    e_sdk_not_inited,					// SDK software is not ready 
-    e_guidance_hardware_not_ready,		// Guidance hardware is not ready 
+    e_sdk_no_err = 0,					// error없이 성공
+    e_load_libusb_err,					// libusb 라이브러리 로드 error
+    e_sdk_not_inited,					// SDK 소트프웨어가 아직 준비되지 않음 
+    e_guidance_hardware_not_ready,		// Guidance 하드웨어가 아직 준비되지 않음 
     e_disparity_not_allowed,			// If work type is standard, disparity is not allowed to be selected 
     e_image_frequency_not_allowed,		// Image frequency must be one of the enum type e_image_data_frequecy 
     e_config_not_ready,					// Get config including the work type flag, before you can select data 
@@ -263,7 +263,7 @@ enum e_sdk_err_code
 
 ## e\_vbus\_index
 
-**Description:** Define logical direction of vbus, i.e. the Guidance Sensor selected.
+**설명:** vbus의 논리적 방향을 정의. i.e. 선택된 Guidance 센서
 
 
 ~~~ cpp
@@ -279,7 +279,7 @@ enum e_vbus_index
 
 ## e\_image\_data\_frequecy
 
-**Description:** Define frequency of image data.
+**설명:** 이미지 데이터의 빈도 정의
 
 ~~~ cpp
 enum e_image_data_frequecy
@@ -292,9 +292,9 @@ enum e_image_data_frequecy
 
 ## user\_callback
 
-- **Description:** Call back function prototype.
-- **Parameters:** `event_type` use it to identify the data type: image, imu, ultrasonic, velocity or obstacle distance; `data_len` length of the input data; `data` input data read from GUIDANCE
-- **Return:** `error code`. Non-zero if error occurs.
+- **설명:** callback 함수 프로토타입
+- **인자:** 데이터 타입을 식별하기 위해서 `event_type`에서 사용: 이미지, imu, 울트라소닉, 속력 혹은 장애물 거리; `data_len` 입력 데이터의 크기; `data` GUIDANCE에서 읽은 입력 데이터
+- **Return:** `error code`. error가 발생하면 0이 아닌 값.
 
 ~~~ cpp
 typedef int (*user_call_back)( int event_type, int data_len, char *data );
