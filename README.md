@@ -21,6 +21,13 @@ English version:
 　[Guidance SDK API Documentation](doc/Guidance_SDK_API.md)
 
 
+한글버전：
+
+　[개발자 가이드](doc/개발자가이드/개발자가이드.md)　
+
+　[Guidance SDK API 문서](doc/Guidance_SDK_API_kr.md)
+
+
 Structure
 =========
 -	**demo**: a visual tracking project by using Guidance SDK

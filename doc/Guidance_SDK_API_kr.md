@@ -48,26 +48,26 @@ USB를 통해 데이터를 받기 위해 2가지 방법이 있다.
 
 	Guidance API를 이용해서 데이터를 받을 수 있다. 이러한 API 기능을 "select"라는 이름을 붙여서 구별한다.
 
-	**주의:** If user subscribes the image data and output frequency using Guidance API functions, it will only temporarily override the data selection that is made in the Guidance Assistant software when the Guidance system is still powered on. However, the data selection that is made through the Guidance API will not permanently change the data subsections options stored in the Guidance system, unless you de-select the "Enable" option in the "USB" tab.
+	**주의:** 만약 사용자가 Guidance API 함수를 사용해서 이미지 데이터와 출력 빈도를 받는다면, Guidance 시스템이 켜져있는 동안 Guidance Assistant 소프트웨어에서 만들어진 데이터 섹션을 임시로 덮어쓰기할 것이다. 하지만 "USB"탭에서 "Enable"옵션을 해제하지 않는다면, Guidance API를 통해 만들어진 데이터 섹션은 Guidance 시스템에 저장된 데이터 수신 옵션을 영구히 변경하지 않는다.
 
 ### 2.1.2 UART
 
-The supported data types are Velocity Data, Obstacle Distance Data, IMU Data, and Ultrasonic Data.
+지원하는 데이터 타입은 속도 데이터, 장애물 거리 데이터, IMU 데이터, 울트라소닉 데이터이다.
 
 1. Subscribe Data
 
-	You may only use Guidance assistant software to subscribe UART data. Enable this selection from "DIY->API->UART" page. Same as USB, the configuration will be saved in Guidance Core, unless you de-select the "Enable" option in the "UART" tab.
+	UART 데이터를 받기위해 Guidance assistant 소프트웨어를 사용할 수도 있다.  "DIY->API->UART" 페이지에 이 섹션을 유효하게 만든다. "UART"탭에서 Enable" 옵션을 해제하지 않으면, USB와 같이 설정은 Guidance Core에 저장된다.
 
 	![](./image/Guidance_SDK_API6086.png)
 
-2. Protocol Description
+2. Protocol 상세
 
-Protocol Frame Format:
+Protocol 프레임 포맷:
 
 | SOF | LEN | VER | RES | SEQ | CRC16 | DATA | CRC32 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Protocol Frame Explanation:
+Protocol 프레임 설명:
 
 | Field | Byte Index | Size（bit） | Description |
 | --- | --- | --- | --- |
@@ -80,15 +80,15 @@ Protocol Frame Explanation:
 | DATA | 12 | --① | Frame data, maximum length  1007bytes |
 | CRC32 | --② | 32 | Frame CRC32checksum |
 
-1. Frame data size can vary, 1007 is the maximum length.
-2. The index of this field depends on the length of the data field.
+1. 프레임 데이터 크기는 가변적이며, 1007이 최대 크기다.
+2. 이 필드의 인덱스는 데이터 필드의 길이에 의존한다.
 
-Data Field Format:
+데이터 필드 포맷:
 
 | COMMAND SET | COMMAND ID | COMMAND DATA |
 | --- | --- | --- |
 
-Data Field Explanation:
+데이터 필드 설명:
 
 | Data Field | Byte Index | Size（byte） | Description |
 | --- | --- | --- | --- |
@@ -96,35 +96,36 @@ Data Field Explanation:
 | COMMAND ID | 1 | 1 | e\_image: 0x00e\_imu: 0x01e\_ultrasonic: 0x02e\_velocity: 0x03e\_obstacle\_distance: 0x04 |
 | COMMAND DATA | 2 | -- | Data body |
 
-## 2.2 Data Types
+## 2.2 데이터 타입
 
-Each of the supported data types is described below.
+지원하는 데이터 타입의 각각은 아래와 같다.
 
-- **Velocity Data:** Outputs velocity information. The unit is **millimeter/second** and the frequency is 20 Hz.
+- **Velocity Data:** 속력 정보를 출력한다. 단위는 "millimeter/second"이며 빈도는 20Hz이다.
 
-- **Obstacle Distance Data:** Outputs obstacle distance for five directions. The unit is **centimeter** and the frequency is 20 Hz.
+- **Obstacle Distance Data:** 5개 방향에 대해서 장애물 거리를 출력한다. 단위는 **centimeter**이며 빈도는 20Hz이다.
 
-- **IMU Data:** Outputs IMU data, including accelerometer (in unit of meter/second) and attitude (in quaternion format) data. The frequency is 20 Hz.
+- **IMU Data:** IMU 데이터를 출력하며 가속도(meter/second)와 attitude(quaternion포맷) 데이터를 포함한다. 빈도는 20Hz이다.
 
-- **Ultrasonic Data:** Outputs ultrasonic data for five directions, including obstacle distance (in unit of meter) and reliability of the data. The frequency is 20 Hz.
+- **Ultrasonic Data:** 5개 방향에 대한 울트라소닉 데이터를 출력한다. 여기에는 장애물의 거리(미터)와 데이터의 신뢰성을 포함하고 있다. 빈도는 20Hz이다.
+Outputs ultrasonic data for five directions, including obstacle distance (in unit of meter) and reliability of the data. The frequency is 20 Hz.
 
-- **Greyscale Image:** Outputs Greyscale images for five directions. The image size is 320\*240 bytes for individual sensor. The default frequency is 20 Hz and can be scaled down using Guidance API.
+- **Greyscale Image:** 5개 방향에 대해서 그레이 스케일 이미지를 출력한다. 이미지의 크기는 각 센서에 대해 320\*240 바이트이다. 기본 빈도는 20Hz이고 Guidance API를 이용해서 낮출 수 있다.
 
-- **Depth Image:** Outputs depth images for five directions. The image size is 320\*240\*2 bytes for each direction. The default frequency is 20 Hz and can be scaled down using Guidance API.
+- **Depth Image:** 5개 방향에 대해서 depth 이미지를 출력한다. 이미지의 크기는 각 방향에 대해서 320\*240\*2 바이트이다. 기본 빈도는 20hz이고 Guidance API를 이용해서 낮출 수 있다.
   
-  **Notes:** In order to achieve best performance, it is suggested that large data (e.g. images) be copied instead of processing the data in-place, if the received data will be processed for a long time.
+  **주의:** 최고의 성능을 위해서, 처리하는데 시간이 오래 걸릴꺼 같은 큰 사이즈의 데이터의 경우 데이터를 바로 처리하는 대신에 복사하는 것을 권한다.
 
-# 3 Getting Started
+# 3 시작하기
 
-Guidance SDK have provided examples to get data from Guidance system. This section guides you how to execute these examples.
+Guidance SDK는 Guidance 시스템으로부터 데이터를 얻기 위한 예제를 제공한다. 이 섹션은 예제를 실행하는 방법을 가이드한다.
 
-### 3.1 Run USB example in Linux
+### 3.1 리눅스에서 USB 예제 실행
 
-1. **Setup the environment.**
+1. **환경설정**
 
-	The Guidance SDK use _libusb-1.0_ library to read data from Guidance system. Please reference _[http://www.libusb.org](http://www.libusb.org/)_ to compile and install the _libusb-1.0_ library.
+	Guidance SDK는 Guidance 시스템에서 데이터를 읽기 위해서 _libusb-1.0_ 라이브러리를 사용한다. _libusb-1.0_ 라이브러리를 컴파일하고 설치하기 위해서 _[http://www.libusb.org](http://www.libusb.org/)_를 참조하기 바란다.
 
-2. **Copy related files.**
+2. **관련 파일 복사**
 
 	Makefiles are provided and tested. The user does not need to change anything to run the example code.
 
