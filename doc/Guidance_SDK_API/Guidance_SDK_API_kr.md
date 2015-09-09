@@ -17,7 +17,7 @@
 
 이 섹션에서는 Guidance SDK의 구조를 소개한다. SDK는 3개 계층으로 나눠져 있다:
 
-![](./image/Guidance_SDK_API3987.png)
+![](Images/Guidance_SDK_API3987.png)
 
 - **Application:** 이 계층은 HAL 계층으로부터 데이터를 처리한다. 개발자가 작성한다.
 - **HAL:** 이 계층은 Driver 계층과 통신하여 데이터를 패킹하거나 파싱한다. 예제 코드(UART)나 SDK 라이브러리(USB)로 구현된다. e.g. _libDJI\_guidance.so_.
@@ -42,7 +42,7 @@ USB를 통해 데이터를 받기 위해 2가지 방법이 있다.
 
 	**주의:** 가용한 대역폭은 이미지 데이터의 선택과 출력 대역폭이 반대다. 받은 이미지 데이터의 선택과 출력 대역폭은 저장되어 Guidance 시스템을 켰다가 켜도 계속 유지된다.
 
-	![](./image/Guidance_SDK_API5146.png)
+	![](Images/Guidance_SDK_API5146.png)
 
 2. Guidance API
 
@@ -58,7 +58,7 @@ USB를 통해 데이터를 받기 위해 2가지 방법이 있다.
 
 	UART 데이터를 받기위해 Guidance assistant 소프트웨어를 사용할 수도 있다.  "DIY->API->UART" 페이지에 이 섹션을 유효하게 만든다. "UART"탭에서 Enable" 옵션을 해제하지 않으면, USB와 같이 설정은 Guidance Core에 저장된다.
 
-	![](./image/Guidance_SDK_API6086.png)
+	![](Images/Guidance_SDK_API6086.png)
 
 2. Protocol 상세
 
