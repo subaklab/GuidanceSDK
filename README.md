@@ -28,7 +28,7 @@ English version:
 한글버전：
 
 
-　[개발자 가이드](doc/Guides/Developer_Guide/en/DeveloperGuide_kr.md)
+　[개발자 가이드](doc/Guides/Developer_Guide/kr/DeveloperGuide_kr.md)
 
 　[예제 실행하기](doc/Guides/RunExample/runExample.md)
 
@@ -36,8 +36,6 @@ English version:
 
 　[API 문서](doc/Guidance_SDK_API/Guidance_SDK_API_kr.md)
 
-
-----
 
 　[개발자 가이드](doc/개발자가이드/개발자가이드.md)　
 
